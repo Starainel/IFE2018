@@ -141,19 +141,19 @@ h1 {
 }
 
 .features > div > div:nth-of-type(1) {
-    background: url(/image/Iphone\ Icon.png) no-repeat 10px 0;
+    background: url(/9-11/image/IphoneIcon.png) no-repeat 10px 0;
 }
 
 .features > div > div:nth-of-type(2) {
-    background: url(/image/Check\ Icon.png) no-repeat 10px 0;
+    background: url(/9-11/image/CheckIcon.png) no-repeat 10px 0;
 }
 
 .features > div > div:nth-of-type(3) {
-    background: url(/image/Pencil\ Icon.png) no-repeat;
+    background: url(/9-11/image/PencilIcon.png) no-repeat;
 }
 
 .features > div > div:nth-of-type(4) {
-    background: url(/image/Settings\ Icon.png) no-repeat;
+    background: url(/9-11/image/SettingsIcon.png) no-repeat;
 }
 
 .features h3 {
@@ -178,7 +178,7 @@ h1 {
     position: relative;
     overflow: hidden;
     background-color: rgb(20, 20, 20, 0.651);
-    background-image: url(/image/IPad.png);
+    background-image: url(/9-11/image/IPad.png);
     background-repeat: no-repeat;
     background-position: 955px 103px
 }
@@ -399,16 +399,16 @@ h1 {
 }
 
 .crew a:nth-of-type(1) {
-    background: url(/image/Facebook\ Icon.png) no-repeat 50%;
+    background: url(/9-11/image/FacebookIcon.png) no-repeat 50%;
 }
 
 .crew a:nth-of-type(2) {
-    background: url(/image/Twitter\ Icon.png) no-repeat 50%;
+    background: url(/9-11/image/TwitterIcon.png) no-repeat 50%;
     margin: 0 30px;
 }
 
 .crew a:nth-of-type(3) {
-    background: url(/image/Instagram\ Icon.png) no-repeat 50%;
+    background: url(/9-11/image/InstagramIcon.png) no-repeat 50%;
 }
 
 .crew > div > div > div:hover > div {
@@ -499,17 +499,17 @@ h1 {
 
 .contact div > div:nth-of-type(2) p:nth-of-type(2) {
     padding-left: 30px;
-    background: url(/image/Map\ Icon.png) no-repeat;
+    background: url(/9-11/image/MapIcon.png) no-repeat;
 }
 
 .contact div > div:nth-of-type(2) p:nth-of-type(3) {
     padding-left: 30px;
-    background: url(/image/Phone\ Icon.png) no-repeat;
+    background: url(/9-11/image/PhoneIcon.png) no-repeat;
 }
 
 .contact div > div:nth-of-type(2) p:nth-of-type(4) {
     padding-left: 30px;
-    background: url(/image/Mail\ Icon.png) no-repeat;
+    background: url(/9-11/image/MailIcon.png) no-repeat;
 }
 
 /* section eight */
@@ -563,27 +563,27 @@ h1 {
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(1) {
-    background: url(/image/Twitter\ Icon.png) no-repeat;
+    background: url(/9-11/image/TwitterIcon.png) no-repeat;
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(2) {
-    background: url(/image/Facebook\ Icon.png) no-repeat;
+    background: url(/9-11/image/FacebookIcon.png) no-repeat;
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(3) {
-    background: url(/image/Google\ Icon.png) no-repeat;
+    background: url(/9-11/image/GoogleIcon.png) no-repeat;
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(4) {
-    background: url(/image/Tumbler\ Icon.png) no-repeat;
+    background: url(/9-11/image/TumblerIcon.png) no-repeat;
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(5) {
-    background: url(/image/Pinterest\ Icon.png) no-repeat;
+    background: url(/9-11/image/PinterestIcon.png) no-repeat;
 }
 
 .more > div > div:nth-of-type(4) a:nth-of-type(6) {
-    background: url(/image/LinkedIn\ Icon.png) no-repeat;
+    background: url(/9-11/image/LinkedInIcon.png) no-repeat;
 }
 
   
