@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+</head>
+<body>
+    <script>
+        function Go() {
+            console.log("Go");
+        }
+
+        function GoSteps(n) {
+            if (Number(n)) {
+                for (var i = 0; i < Math.floor(Number(n)); i++) {
+                    Go();
+                }
+            } else if (n === undefined) {
+                Go();
+            }
+        }
+
+    </script>
+</body>
+</html>

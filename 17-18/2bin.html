@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        function dec2bin(decNumber) {
+            var arr = [];
+
+            var dno = document.getElementById("dec-number").value;
+            var dn = Number(document.getElementById("dec-number").value);
+
+            if (isNaN(dn) || dno === "" || dn < 0 || Math.floor(dn) !== dn) {
+                alert("输入无效");
+            } else if (dn === 0) {
+                arr.unshift("0");
+            } else {
+                for (; dn >= 1; dn = Math.floor(dn / 2)) {
+                    arr.unshift(dn % 2);
+                }
+            }
+            return arr;
+        }
+
+        var b = document.getElementById("trans-btn");
+        b.onclick = function () {
+            var inp = Number(document.getElementById("dec-number").value);
+            var p = document.getElementById("result");
+
+            var bbo = document.getElementById("bin-bit").value;
+            var bb = Number(document.getElementById("bin-bit").value);
+
+            var res = dec2bin(inp);
+            var fl = res.length;
+
+            if (bbo == "") {
+                p.innerHTML = "运算结果" + res.join("");
+            } else if (isNaN(bb) || (bb < fl)) {
+                p.innerHTML = "运算结果" + res.join("") + " 位数错误！";
+            } else if (bb > fl) {
+                var get = res;
+                for (; bb > fl; bb--) {
+                    get.unshift("0");
+                }
+                p.innerHTML = "运算结果" + get.join("");
+            } else {
+                p.innerHTML = "运算结果" + res.slice(fl - bb, fl).join("");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+html {
+  height: 100%;
+}
+
+body {
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+.row {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+p.row {
+  margin-right: 30px;
+}
+
+header {
+  height: 100%;
+  width: 150px;
+  float: left;
+  margin-right: 20px;
+}
+
+h1 {
+  height: 100%;
+  background-color: rgb(41, 169, 255);
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  margin: 0;
+}
+
+main {
+  overflow: hidden;
+}
+
+h2:nth-of-type(1) {
+  padding-top: 20px;
+  margin-top: 0;
+}
+

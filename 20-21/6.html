@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function () {
+            var div = document.getElementsByTagName("div")[0];
+
+            function gif() {
+                ltr();
+                function ltr() {
+                    var y = 7680;
+                    var stop = setInterval(function () {
+                        y -= 480;
+                        div.style.backgroundPositionY = y + "px";
+                        if (y == 480) {
+                            clearInterval(stop);
+                            rtl();
+                        }
+                    }, 100)
+                }
+
+
+                function rtl() {
+                    var y = 480;
+                    var stop = setInterval(function () {
+                        y += 480;
+                        div.style.backgroundPositionY = y + "px";
+                        if (y == 7680) {
+                            clearInterval(stop);
+                            setTimeout(ltr, 100);
+                        }
+                    }, 100)
+                }
+
+            }
+            gif();
+        }
+    </script>
+</head>
+
+<body>
+    <div style="width: 480px;
+                height: 480px;
+                margin: 20px;
+                background-image: url('erik.jpg');
+                background-position-y: 0;">
+    </div>
+</body>
+
+</html>

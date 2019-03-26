@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        margin: 0;
+      }
+
+      header {
+        background-color: rgb(63, 63, 63);
+        height: 50px;
+      }
+
+      .headbox {
+        width: 960px;
+        height: 50px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        float: left;
+        color: white;
+        line-height: 50px;
+        font-size: 1.2em;
+      }
+
+      .rightnav {
+        float: right;
+      }
+
+      .rightnav a {
+        float: left;
+        margin-left: 10px;
+        margin-top: 5px;
+        color: white;
+        text-decoration: none;
+        font-size: 0.8em;
+      }
+
+
+      .display {
+        background-color: rgb(43, 150, 43);
+        height: 200px;
+      }
+
+      .displaybox {
+        width: 960px;
+        height: 200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .displaynav {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
+      .displaynav a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 30px;
+        vertical-align: bottom;
+        background-color: rgba(255, 255, 255, 0.411);
+        text-decoration: none;
+        color: black;
+      }
+
+      .displaynav a:nth-of-type(2) {
+        height: 50px;
+        line-height: 70px;
+        background-color: rgba(255, 255, 255, 0.747);
+      }
+
+      .mainnavbox {
+        width: 960px;
+        margin: 0 auto;
+        display: flow-root;
+      }
+
+      .mainnavbox a {
+        display: inline-block;
+        float: left;
+        width: 80px;
+        height: 40px;
+        margin-top: 10px;
+        text-decoration: none;
+        color: black;
+        border: 1px solid rgb(212, 212, 212);
+        border-radius: 1.2em 1.2em 0 0;
+        background-color: rgb(241, 241, 241);
+        text-align: center;
+        line-height: 45px;
+        font-size: 0.9em;
+      }
+
+      .mainnavbox a:nth-of-type(1) {
+        border-bottom-color: rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      .mainnav::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 51px;
+        width: calc((100% - 960px) / 2);
+        border-bottom: 1px solid rgb(212, 212, 212);
+      }
+
+      .mainnavbox::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        height: 51px;
+        width: calc(100% - ((100% - 960px) / 2) - 246px);
+        border-bottom: 1px solid rgb(212, 212, 212);
+      }
+
+      .maincontent {
+        width: 960px;
+        margin: 10px auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between; /*分配水平方向的相等间距*/
+        /*content高度固定的情况下，垂直方向的相等间距也可以使用
+        align-content:space-between设置*/
+      }
+
+      .maincontent div {
+        border: 1px solid rgb(212, 212, 212);
+        padding: 80px;
+        box-sizing: border-box;
+      }
+
+      /*分配2个间距*/
+      .row1, .row3 {
+        width: calc((100% - 5px * 2) / 3);
+      }
+
+      /*分配3个间距*/
+      .row2 {
+        width: calc((100% - 5px * 3) / 4);
+        margin: 5px 0; /*垂直方向间距*/
+      }
+
+      footer {
+        height: 80px;
+        background-color: rgb(155, 155, 155);
+      }
+
+      footer p {
+        padding: 20px;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+    </style>
+    <link rel="stylesheet" href="">
+    <script src=""></script>
+  </head>
+  <body>
+
+    <header>
+      <div class="headbox">
+        <div class="logo">LOGO</div>
+        <div class="rightnav">
+          <a href="">Github</a>
+          <a href="">Register</a>
+          <a href="">Login</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="display">
+      <div class="displaybox">
+        <div class="displaynav">
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="main">
+      <nav class="mainnav">
+        <div class="mainnavbox">
+          <a href="">HOME</a>
+          <a href="">PROFILE</a>
+          <a href="">ABOUT</a>
+        </div>
+      </nav>
+      <section class="maincontent">
+        <div class="row1">This is Content 1</div>
+        <div class="row1">MaybeContent 2</div>
+        <div class="row1">Content3</div>
+        <div class="row2">Content4</div>
+        <div class="row2">Content5</div>
+        <div class="row2">Content6</div>
+        <div class="row2">Content7</div>
+        <div class="row3">Content8</div>
+        <div class="row3">Content9</div>
+        <div class="row3">Content10</div>
+      </section>
+    </section>
+
+    <footer>
+      <p>© 2018 ife.baidu.com</p>
+    </footer>
+
+  </body>
+</html>

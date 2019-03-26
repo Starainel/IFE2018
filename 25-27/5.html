@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        *{
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="year-select">
+
+    </select>
+
+    <select id="month-select">
+
+    </select>
+
+    <select id="day-select">
+
+    </select>
+
+    <select id="hour-select">
+
+    </select>
+
+    <select id="minite-select">
+
+    </select>
+
+    <select id="second-select">
+
+    </select>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+        var select = document.querySelectorAll("select");
+        var p = document.querySelector("p");
+        //添加option的函数
+        function addOpt(x, obj) {
+            for (var i = 0; i <= x; i++) {
+                var option = document.createElement("option");
+                if (obj === select[0]) {
+                    option.value = 2000 + i;
+                    option.innerText = 2000 + i;
+                    obj.appendChild(option);
+                } else if (obj === select[1]) {
+                    option.value = i;
+                    option.innerText = i + 1;
+                    obj.appendChild(option);
+                } else if (obj === select[2]) {
+                    option.value = i + 1;
+                    option.innerText = i + 1;
+                    obj.appendChild(option);
+                } else {
+                    option.value = i;
+                    option.innerText = i;
+                    obj.appendChild(option);
+                }
+            }
+        }
+
+        //填充每一个下拉列表
+        addOpt(100, select[0]);
+        addOpt(11, select[1]);
+        addOpt(30, select[2]);
+
+        addOpt(23, select[3]);
+        addOpt(59, select[4]);
+        addOpt(59, select[5]);
+
+        //根据不同的月份显示不同的天数
+        select[1].addEventListener("change", function () {
+            switch (Number(select[1].options[select[1].selectedIndex].value)) {
+                case 1:
+                    if (Number(select[0].options[select[0].selectedIndex].value) % 4 === 0) {
+                        select[2].options.length = 0;
+                        addOpt(28, select[2]);
+                    } else {
+                        select[2].options.length = 0;
+                        addOpt(27, select[2]);
+                    }
+                    break;
+                case 3:
+                case 5:
+                case 8:
+                case 10:
+                    addOpt(29, select[2]);
+                    break;
+                default:
+                    addOpt(30, select[2]);
+            }
+        });
+
+        //根据不同的年份显示不同的2月天数
+        select[0].addEventListener("change", function () {
+            if (Number(select[0].options[select[0].selectedIndex].value) % 4 === 0) {
+                addOpt(28, select[2]);
+            } else {
+                addOpt(27, select[2]);
+            }
+
+        });
+
+        function getday(d) {
+            switch (d) {
+                case 0:
+                    d = "星期天";
+                    break;
+                case 1:
+                    d = "星期一";
+                    break;
+                case 2:
+                    d = "星期二";
+                    break;
+                case 3:
+                    d = "星期三";
+                    break;
+                case 4:
+                    d = "星期四";
+                    break;
+                case 5:
+                    d = "星期五";
+                    break;
+                case 6:
+                    d = "星期六";
+                    break;
+            }
+            return d;
+        }
+
+
+        function opt() {
+            var myDate = new Date();
+            var nowTime = myDate.getTime();
+
+            var dateSel = new Date();
+            dateSel.setFullYear(Number(select[0].options[select[0].selectedIndex].value));
+            dateSel.setMonth(Number(select[1].options[select[1].selectedIndex].value));
+            dateSel.setDate(Number(select[2].options[select[2].selectedIndex].value));
+            dateSel.setHours(Number(select[3].options[select[3].selectedIndex].value));
+            dateSel.setMinutes(Number(select[4].options[select[4].selectedIndex].value));
+            dateSel.setSeconds(Number(select[5].options[select[5].selectedIndex].value));
+            var selTime = dateSel.getTime();
+
+            var years = dateSel.getFullYear();
+            var month = dateSel.getMonth() + 1;
+            var date = dateSel.getDate();
+            var hours = dateSel.getHours();
+            var minutes = dateSel.getMinutes();
+            var seconds = dateSel.getSeconds();
+
+            var day = getday(dateSel.getDay());
+
+            if ((nowTime - selTime) > 0) {
+                var dif = nowTime - selTime;
+            } else {
+                var dif = selTime - nowTime;
+            }
+            var d = Math.floor(dif / 1000 / 60 / 60 / 24);
+            dif = dif - d * 24 * 60 * 60 * 1000;
+            var h = Math.floor(dif / 1000 / 60 / 60);
+            dif = dif - h * 60 * 60 * 1000;
+            var m = Math.floor(dif / 1000 / 60);
+            dif = dif - m * 60 * 1000;
+            var s = Math.floor(dif / 1000);
+
+            if ((nowTime - selTime) > 0) {
+                p.innerHTML = "现在距离" + years + "年" + month + "月" + date + "日" + " " +day + " " + hours + ":" + minutes + ":" +
+                    seconds + " " + "已经过去" + " " + d + "天" + h + "小时" + m + "分" + s + "秒";
+            } else {
+                p.innerHTML = "现在距离" + years + "年" + month + "月" + date + "日" + " " +day + " " + hours + ":" + minutes + ":" +
+                    seconds + " " + "还有" + " " + d + "天" + h + "小时" + m + "分" + s + "秒";
+            }
+
+        }
+
+        for (var j = 0; j < 6; j++) {
+            select[j].addEventListener("change", function () {
+                setInterval(opt, 1000);
+            });
+        }
+    </script>
+</body>
+
+</html>

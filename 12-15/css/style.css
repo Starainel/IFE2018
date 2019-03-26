@@ -1,0 +1,625 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+#main {
+    display: flex;
+    height: 100%;
+}
+
+.function {
+    flex: 0 0 100px;
+    height: 100%;
+    background-color: rgb(29, 37, 49);
+    position: relative;
+}
+
+.menu {
+    flex: 0 0 250px;
+    height: 100%;
+    background-color: rgb(34, 44, 60);
+    font-family: "proxima_nova_ltsemibold";
+    color: white;
+    position: relative;
+}
+
+.content {
+    flex: 1 1 0;
+    height: 100%;
+}
+
+.function a {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    border-radius: 50%;
+}
+
+.function span::before {
+    content: url("/ife/12-15/12_15-assets/Active Highlight.png");
+    position: absolute;
+    top: 40px;
+}
+
+.message {
+    background: url("/ife/12-15/12_15-assets/Item 1.png") no-repeat center,
+        linear-gradient(90deg, rgb(25, 145, 235) 0%, rgb(46, 161, 248) 100%);
+}
+
+
+.rocket {
+    background: url("/ife/12-15/12_15-assets/Item 2.png") no-repeat center,
+        linear-gradient(90deg, rgb(127, 91, 230) 1%, rgb(157, 143, 227) 100%);
+}
+
+.game {
+    background: url("/ife/12-15/12_15-assets/Item 3.png") no-repeat center,
+        linear-gradient(-90deg, rgb(244, 84, 56) 0%, rgb(203, 39, 10) 100%);
+}
+
+.add {
+    box-sizing: border-box;
+    background: url("/ife/12-15/12_15-assets/Plus Icon.png") no-repeat center;
+    border: 3px solid rgb(45, 56, 72);
+}
+
+.function>.grid,
+.function>.setting {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    border-radius: 0;
+    position: absolute;
+    bottom: 20px;
+}
+
+.grid {
+    left: 26px;
+    background: url("/ife/12-15/12_15-assets/Grid.png");
+}
+
+.setting {
+    right: 26px;
+    background: url("/ife/12-15/12_15-assets/Settings.png")
+}
+
+
+.menu>section {
+    margin: 0 30px 10px;
+    padding: 10px 0 0 0;
+    border-top: 1px solid rgb(42, 53, 71);
+}
+
+.menu section:nth-of-type(1) {
+    border: none;
+}
+
+.menu .head {
+    font-size: 12px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(91, 103, 121);
+    text-transform: uppercase;
+    line-height: 40px;
+    position: relative;
+}
+
+.setting1 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/ife/12-15/12_15-assets/Settings.png");
+    position: absolute;
+    right: 0;
+    top: 9px;
+}
+
+.menu span {
+    display: block;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(183, 192, 205);
+    line-height: 36px;
+}
+
+.menu1>span:nth-of-type(3),
+.dashboard>span:nth-of-type(2),
+.dashboard>span:nth-of-type(4) {
+    position: relative;
+}
+
+.menu .count {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(255, 255, 255);
+    line-height: 26px;
+    background: linear-gradient(90deg, rgb(25, 145, 235) 0%, rgb(46, 161, 248) 100%);
+    display: inline-block;
+    width: 32px;
+    height: 24px;
+    border-radius: 20px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    display: inline-block;
+}
+
+.menu .alert {
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    background: linear-gradient(180deg, rgb(244, 84, 56) 0%, rgb(203, 39, 10) 100%);
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    display: inline-block;
+}
+
+.menu .sign {
+    content: url("/ife/12-15/12_15-assets/Active Highlight.png");
+    position: absolute;
+    left: -30px;
+    top: 5px;
+}
+
+.menu .goals {
+    margin: 0 30px 30px 30px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    width: 190px;
+}
+
+.goals p {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.goals span {
+    float: right;
+    margin: 0;
+}
+
+.progress {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 3px;
+    background: rgb(71, 83, 100, 0.302)
+}
+
+.progress span {
+    float: left;
+    width: 18.125%;
+    height: 4px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, rgba(128, 91, 230, 0.658) 0%, rgb(157, 143, 227) 100%);
+}
+
+.header {
+    height: 80px;
+    width: 100%;
+    border-bottom: 1px solid rgb(229, 232, 238);
+}
+
+.header p {
+    font-size: 24px;
+    font-family: "Proxima Nova";
+    color: rgb(53, 64, 82);
+    line-height: 80px;
+    margin: 0;
+    padding-left: 30px;
+    display: inline-block;
+}
+
+.user {
+    width: 200px;
+    float: right;
+    margin: 16px 30px 16px 0;
+    position: relative;
+}
+
+.user img {
+    float: left;
+    margin-right: 18px;
+}
+
+.user span:nth-of-type(1) {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: absolute;
+    left: 27px;
+    top: 25px;
+    background: url("/ife/12-15/12_15-assets/Status.png") no-repeat center,
+    white;
+    cursor: pointer;
+}
+
+.user span:nth-of-type(2) {
+    display: block;
+    font-size: 16px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(35, 153, 241);
+    line-height: 1.2;
+}
+
+.user span:nth-of-type(3) {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(181, 181, 181);
+    line-height: 1.2;
+}
+
+.user span:nth-of-type(4) {
+    display: block;
+    width: 11px;
+    height: 7px;
+    background: url("/ife/12-15/12_15-assets/dropdown.png") no-repeat center;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    cursor: pointer;
+}
+
+.mainarea {
+    display: flex;
+    height: calc(100% - 81px);
+}
+
+.people {
+    flex: 0 0 400px;
+}
+
+.chat {
+    flex: 1 1 0;
+    position: relative;
+}
+
+.search {
+    width: 400px;
+    height: 70px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(229, 232, 238);
+    border-right: 1px solid rgb(229, 232, 238);
+    position: relative;
+}
+
+.search input {
+    height: 36px;
+    width: 340px;
+    margin: 15px 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid rgb(229, 232, 238);
+    padding-left: 14px;
+}
+
+input::placeholder {
+    font-size: 14px;
+    font-family: "Proxima Nova";
+    color: rgba(159, 169, 186, 0.8);
+    line-height: 1.2;
+}
+
+.search button {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: url("/ife/12-15/12_15-assets/Search icon.png");
+    position: absolute;
+    right: 44px;
+    top: 26px;
+    cursor: pointer;
+}
+
+.pep {
+    overflow: scroll;
+    height: calc(100% - 70px);
+}
+
+.pep div {
+    width: 400px;
+    height: 130px;
+    box-sizing: border-box;
+    border-right: 1px solid rgb(229, 232, 238);
+    border-bottom: 1px solid rgb(229, 232, 238);
+    padding: 15px 30px;
+}
+
+.pep div:nth-of-type(1) {
+    border-left: 3px solid rgb(35, 153, 241);
+    position: relative;
+}
+
+.pep img {
+    float: left;
+    margin-right: 25px;
+}
+
+.pep span:nth-of-type(1) {
+    font-size: 16px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(35, 153, 241);
+    line-height: 1.2;
+    display: block;
+    padding: 5px 0;
+}
+
+.pep span:nth-of-type(1) > span {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(127, 143, 164);
+    line-height: 2.571;
+    float: right;
+}
+
+.pep span:nth-of-type(2) {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(181, 181, 181);
+    line-height: 1.2;
+}
+
+.pep span:nth-of-type(3) {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    text-align: center;
+    color: white;
+    position: absolute;
+    right: 30px;
+    top: 85px;
+}
+
+
+.pep p {
+    font-size: 14px;
+    font-family: "Proxima Nova";
+    color: rgb(88, 93, 104);
+    line-height: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.pep > div:nth-of-type(1) p:nth-of-type(1) {
+    width: calc(100% - 32px);
+}
+
+.pep > div {
+    cursor: pointer;
+}
+
+.msgmenu {
+    width: 100%;
+    height: 70px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(229, 232, 238);
+}
+
+.msgmenu > p {
+    font-size: 18px;
+    font-family: "Proxima Nova";
+    color: rgb(88, 93, 104);
+    line-height: 70px;
+    margin: 0;
+    display: inline-block;
+}
+
+.msgmenu > span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(27, 185, 52);
+}
+
+.msgmenu > div {
+    float: right;
+}
+
+.msgmenu button {
+    width: 34px;
+    height: 30px;
+    border: 1px solid rgb(206, 208, 218);
+    cursor: pointer;
+}
+
+.msgmenu > div {
+    margin-top: 20px;
+}
+
+.msgmenu > div > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.msgmenu > div > div:nth-of-type(1) {
+    padding-right: 24px;
+    border-right: 1px solid rgb(206, 208, 218,0.302);
+}
+
+.msgmenu > div > div:nth-of-type(2) {
+    margin-left: 20px;
+}
+
+.msgmenu > div > div:nth-of-type(1) button {
+    float: left;
+}
+
+.msgmenu > div > div:nth-of-type(2) button {
+    float: right;
+}
+
+
+.addpep {
+    border-radius: 4px 0 0 4px;
+    background: url("/ife/12-15/12_15-assets/User icon.png") no-repeat center,
+    linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+}
+
+.msgmenu .send {
+    border-left: none;
+    border-right: none;
+    background: url("/ife/12-15/12_15-assets/Upload icon.png") no-repeat center,
+    linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+}
+
+.trash {
+    border-radius: 0 4px 4px 0;
+    background: url("/ife/12-15/12_15-assets/Trash icon.png") no-repeat center,
+    linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+}
+
+.goback {
+    border-radius: 4px 0 0 4px;
+    background: url("/ife/12-15/12_15-assets/Arrow left.png") no-repeat center,
+    linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+}
+
+.msgmenu .goahead {
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    background: url("/ife/12-15/12_15-assets/Arrow right.png") no-repeat center,
+    linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+}
+
+.msgmenu > div > div:nth-of-type(2) span {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(86, 104, 138);
+    line-height: 1.2;
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+
+.msg {
+    height: calc(100% - 70px - 81px - 10px);
+    overflow: scroll;
+}
+
+.msg > div {
+    margin: 25px 30px;
+}
+
+.msg img {
+    float: left;
+    margin-right: 24px;
+}
+
+.msg > div span:nth-of-type(1) {
+    font-size: 16px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(88, 93, 104);
+    line-height: 1.2;
+}
+
+.msg > div span:nth-of-type(2) {
+    font-size: 14px;
+    font-family: "proxima_nova_ltsemibold";
+    color: rgb(127, 143, 164);
+    line-height: 2.571;
+}
+
+.msg p {
+    margin-left: 70px;
+    font-size: 14px;
+    font-family: "Proxima Nova";
+    color: rgb(88, 93, 104);
+    line-height: 1.357;
+}
+
+.msg > span > span{
+    font-size: 14px;
+    font-family: "Proxima Nova";
+    line-height: 1.357;
+}
+
+.tuesday {
+    color: rgb(127, 143, 164);
+    border-top: 1px solid rgb(229, 232, 238);
+    display: block;
+    text-align: center;
+}
+
+.tuesday span {
+    position: relative;
+    top: -12px;
+    background: white;
+    padding: 0 20px;
+}
+
+.newmsg {
+    color: rgb(35, 153, 241);
+    border-top: 1px solid rgb(229, 232, 238);
+    display: block;
+    text-align: center;
+
+}
+
+.newmsg span {
+    position: relative;
+    top: -12px;
+    background: white;
+    padding: 0 20px;
+}
+
+.textarea {
+    width: calc(100% - 60px);
+    height: 54px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+}
+
+.textarea button {
+    box-sizing: border-box;
+    width: 54px;
+    background: url("/ife/12-15/12_15-assets/Add icon.png") no-repeat center;
+    border: 1px solid rgb(206, 208, 218);
+    border-radius: 4px 0 0 4px;
+}
+
+.textarea input {
+    box-sizing: border-box;
+    border: 1px solid rgb(223, 227, 233);
+    border-left: none;    
+    width: calc(100% - 54px);
+    border-radius: 0 4px 4px 0;
+}
+
+.textarea button, .textarea input {
+    height: 100%;
+    float: left;
+}
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  

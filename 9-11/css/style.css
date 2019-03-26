@@ -1,0 +1,595 @@
+html,
+body {
+    margin: 0 auto;
+    font-family: Montserrat, sans-serif;
+    position: relative;
+}
+
+body {
+    width: 1600px;
+}
+
+/* section one */
+.welcome {
+    color: white;
+    height: 990px;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(20, 20, 20, 0.651);
+}
+
+.welcome img {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+h1 {
+    font-size: 62px;
+    font-weight: 200;
+    line-height: 48px;
+    margin: 208px 0 86px;
+}
+
+.welcome>p:nth-of-type(1) {
+    font-size: 20px;
+    font-weight: 200;
+    line-height: calc(84px / 3);
+    width: 766px;
+    margin: 0 auto;
+    letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.702);
+}
+
+.welcome div {
+    width: 970px;
+    height: 250px;
+    margin: 104px 0 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.welcome div p:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 13px;
+    margin: 60px 0 19px;
+    letter-spacing: 1px;
+}
+
+.welcome div p:nth-of-type(2) {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 10px;
+    margin-bottom: 45px;
+    color: rgba(255, 255, 255, 0.302);
+    letter-spacing: 1px;
+}
+
+.welcome form {
+    height: 50px;
+}
+
+.welcome input {
+    height: 50px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+    vertical-align: bottom;
+}
+
+.welcome input:nth-of-type(1),
+.welcome input:nth-of-type(2) {
+    width: 292px;
+    font-size: 14px;
+    line-height: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    margin-right: 30px;
+    color: white;
+    padding-left: 21px;
+}
+
+.welcome input:nth-of-type(2)::placeholder {
+    color: rgba(255, 255, 255, 0.302);
+}
+
+.welcome input:nth-of-type(3) {
+    font-size: 12px;
+    line-height: 22px;
+    width: 125px;
+    background: white;
+    border: 1px solid white;
+}
+
+/* section two */
+.features {
+    height: 710px;
+    text-align: center;
+}
+
+.features p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 11px;
+    margin: 89px 0 39px;
+}
+
+.features h2 {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: calc(93px / 2);
+    margin-bottom: 85px;
+    width: 657px;
+    display: inline-block;
+}
+
+.features > div {
+    display: inline-flex;
+    width: 1030px;
+    height: calc(167px * 2);
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.features > div > div {
+    width: 40%;
+    height: 167px;
+    text-align: left;
+    padding-left: 76px;
+}
+
+.features > div > div:nth-of-type(1) {
+    background: url(/image/Iphone\ Icon.png) no-repeat 10px 0;
+}
+
+.features > div > div:nth-of-type(2) {
+    background: url(/image/Check\ Icon.png) no-repeat 10px 0;
+}
+
+.features > div > div:nth-of-type(3) {
+    background: url(/image/Pencil\ Icon.png) no-repeat;
+}
+
+.features > div > div:nth-of-type(4) {
+    background: url(/image/Settings\ Icon.png) no-repeat;
+}
+
+.features h3 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 16px;
+    margin: 0 0 25px 0;
+}
+
+.features div p {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: calc(42px / 2);
+    margin: 0;
+    color: rgba(20, 20, 20, 0.702);
+} 
+
+/* section three */
+.smartcar {
+    height: 799px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(20, 20, 20, 0.651);
+    background-image: url(/image/IPad.png);
+    background-repeat: no-repeat;
+    background-position: 955px 103px
+}
+
+.smartcar img:nth-of-type(1) {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+.smartcar img:nth-of-type(2) {
+    position: absolute;
+    right: 0;
+    top: 133px;
+}
+
+.smartcar h2 {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: calc(137px / 3);
+    margin: 182px 0 47px 315px;
+    width: 370px;
+    letter-spacing: -1.1px;
+}
+
+.smartcar p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: calc(130px / 5);
+    color: rgba(255, 255, 255, 0.702);
+    margin: 0 0 58px 315px;
+    width: 370px;
+    letter-spacing: -0.4px;
+}
+
+.smartcar a {
+    font-size: 12px;
+    line-height: 60px;
+    font-weight: 300;
+    width: 240px;
+    height: 60px;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    text-align: center;
+    text-decoration: none;
+}
+
+.smartcar a:nth-of-type(1) {
+    margin: 0 30px 0 315px;
+    background: white;
+    color: black;
+}
+
+.smartcar a:nth-of-type(2) {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* section four */
+.product {
+    height: 580px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(20, 20, 20, 0.102);
+}
+
+.product h2 {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 41px;
+    margin: 99px 0 85px 0;
+}
+
+.product div {
+    display: inline-block;
+    width: 251px;
+}
+
+.product div:nth-of-type(2) {
+    margin: 0 86px;
+}
+
+.product img {
+    margin: 0 0 40px;
+}
+
+.product p {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: calc(198px / 8);
+}
+
+/* section five */
+.special {
+    height: 1000px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(20, 20, 20, 0.102);
+    font-size: 0;
+}
+
+.special div {
+    width: 970px;
+    overflow: hidden;
+    display: inline-block;
+    text-align: left;
+}
+
+.special div:nth-of-type(1) {
+    margin: 114px 0 80px;
+}
+
+.special div:nth-of-type(1) img {
+    float: left;
+    margin-right: 100px;
+}
+
+.special div:nth-of-type(2) img {
+    float: right;
+    margin-left: 79px;
+}
+
+.special h3 {
+    font-size: 20px;
+    font-weight: 300px;
+    line-height: calc(47px / 2);
+    letter-spacing: -0.2px;
+}
+
+.special p {
+    font-size: 16px;
+    font-weight: 200px;
+    line-height: calc(156px / 6);
+}
+
+/* section six */
+.crew {
+    height: 1084px;
+    border-bottom: 1px solid rgb(20, 20, 20, 0.102);
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.crew h2 {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 30px;
+    margin: 99px 0 35px;
+}
+
+.crew > p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: calc(46px / 2);
+    margin: 0 0 63px;
+    width: 695px;
+    display: inline-block;
+}
+
+.crew > div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 970px;
+    height: 710px;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.crew > div > div {
+    width: 470px;
+    height: 340px;
+    position: relative;
+}
+
+.crew > div > div > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.crew > div > div > div > div {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: rgb(20, 20, 20, 0.651);
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.crew > div > div > div > div p:nth-of-type(1) {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 16px;
+    margin: 109px 0 21px;
+    color: white;
+}
+
+.crew > div > div > div > div p:nth-of-type(2) {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 9px;
+    margin: 0 0 39px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.crew a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+    border-radius: 25px;
+}
+
+.crew a:nth-of-type(1) {
+    background: url(/image/Facebook\ Icon.png) no-repeat 50%;
+}
+
+.crew a:nth-of-type(2) {
+    background: url(/image/Twitter\ Icon.png) no-repeat 50%;
+    margin: 0 30px;
+}
+
+.crew a:nth-of-type(3) {
+    background: url(/image/Instagram\ Icon.png) no-repeat 50%;
+}
+
+.crew > div > div > div:hover > div {
+    display: inline-block;
+}
+
+/* section seven */
+.contact {
+    height: 701px;
+    border-bottom: 1px solid rgb(20, 20, 20, 0.102);
+    box-sizing: border-box;
+}
+
+.contact div {
+    width: 970px;
+    margin: 0 auto;
+}
+
+.contact div > div:nth-of-type(1) {
+    display: inline-block;
+    width: 470px;
+    height: 560px;
+    border: 1px solid rgb(20, 20, 20, 0.102);
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 70px 0 0 0;
+    text-align: center;
+}
+
+.contact div > div:nth-of-type(1) > p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 12px;
+    margin: 50px 0 17px;
+}
+
+.contact input,
+.contact textarea {
+    width: 370px;
+    height: 50px;
+    margin-top: 30px;
+    border: 1px solid rgb(38, 35, 33, 0.2);
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    padding-left: 20px;
+}
+
+.contact textarea {
+    height: 144px;
+    resize: none;
+    padding: 19px;
+}
+
+.contact input:nth-of-type(3) {
+    padding: 0;
+    background: black;
+    color: white;
+}
+
+.contact div > div:nth-of-type(2) {
+    display: inline-block;
+    width: 372px;
+    vertical-align: top;
+    margin-left: 120px;
+}
+
+.contact h2 {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 30px;
+    margin: 158px 0 39px;
+}
+
+.contact div > div:nth-of-type(2) p:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: calc(68px / 3);
+    margin: 0 0 70px;
+    width: 354px;
+}
+
+.contact div > div:nth-of-type(2) p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    width: 264px;
+}
+
+.contact div > div:nth-of-type(2) p:nth-of-type(2) {
+    padding-left: 30px;
+    background: url(/image/Map\ Icon.png) no-repeat;
+}
+
+.contact div > div:nth-of-type(2) p:nth-of-type(3) {
+    padding-left: 30px;
+    background: url(/image/Phone\ Icon.png) no-repeat;
+}
+
+.contact div > div:nth-of-type(2) p:nth-of-type(4) {
+    padding-left: 30px;
+    background: url(/image/Mail\ Icon.png) no-repeat;
+}
+
+/* section eight */
+.more {
+    height: 410px;
+    background: black;
+    overflow: hidden;
+}
+
+.more > div {
+    width: 1170px;
+    margin: 88px auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.more > div > div {
+    flex-basis: 200px;
+}
+
+.more > div > div:nth-of-type(4) {
+    flex-basis: 300px;
+}
+
+.more h3 {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 11px;
+    color: white;
+}
+
+.more a, .more p {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: calc(43px / 2);
+    display: inline-block;
+    margin-top: 35px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.302);
+}
+
+.more p {
+    margin-bottom: 32px;
+}
+
+.more > div > div:nth-of-type(4) a {
+    width: 24px;
+    height: 18px;
+    margin: 0 20px 0 0;
+    filter: brightness(0.302);
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(1) {
+    background: url(/image/Twitter\ Icon.png) no-repeat;
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(2) {
+    background: url(/image/Facebook\ Icon.png) no-repeat;
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(3) {
+    background: url(/image/Google\ Icon.png) no-repeat;
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(4) {
+    background: url(/image/Tumbler\ Icon.png) no-repeat;
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(5) {
+    background: url(/image/Pinterest\ Icon.png) no-repeat;
+}
+
+.more > div > div:nth-of-type(4) a:nth-of-type(6) {
+    background: url(/image/LinkedIn\ Icon.png) no-repeat;
+}
+
+  
+
+
+
+
+
+

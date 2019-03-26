@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+</head>
+
+<body>
+    <script>
+        function diyTrim(str) {
+            var result = "";
+            var str = str.split("");
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] == "\u0020" || str[i] == "\u3000") {
+                    str.splice(i, 1);
+                    i--;
+                } else {
+                    break;
+                }
+            }
+
+            for (var i = 0; i < str.length; i++) {
+                if (str[str.length - 1] == "\u0020" || str[str.length - 1] == "\u3000") {
+                    str.splice(-(i + 1), 1);
+                    i--;
+                } else {
+                    break;
+                }
+            }
+
+            result = str.join("").toString();
+            return result
+        }
+
+
+        function removeRepetition(str) {
+            var result = "";
+            var str = str.split("");
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] == str[i + 1]) {
+                    str.splice(i + 1, 1);
+                    i--;
+                }
+            }
+
+            result = str.join("").toString();
+            return result
+        }
+    </script>
+</body>
+
+</html>

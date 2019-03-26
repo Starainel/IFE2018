@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        input {
+            width: 150px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            display: none;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 1px solid rgb(50, 163, 197);
+            width: 150px;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+        var ul = document.querySelector("ul");
+        var input = document.querySelector("input");
+
+        //页面加载完成后，将焦点移到输入框
+        input.focus();
+
+        //监听输入
+        input.oninput = function () {
+            var res = trim();
+            var cont = content(res);
+            tips(cont);
+            display(res);
+        }
+
+        //鼠标移动事件
+        ul.addEventListener("mousemove", addmouse);
+
+        function addmouse() {
+            //鼠标移动，键盘选择色和默认选择项消失；键盘移动，鼠标选择色消失
+            for (var i = 0; i < ul.childNodes.length; i++) {
+                if (ul.childNodes[i].style.backgroundColor === "lightblue") {
+                    ul.childNodes[i].style.backgroundColor = "";
+                }
+            }
+
+            for (var i = 0; i < ul.childNodes.length; i++) {
+                var li = ul.childNodes[i];
+                li.index = i;
+                li.addEventListener("mousemove", function (e) {
+                    e.target.style.backgroundColor = "lightgreen";
+                    //使键盘和鼠标的移动同步
+                    index = e.target.index;
+                });
+                li.addEventListener("mouseout", function (e) {
+                    e.target.style.backgroundColor = "";
+                });
+                li.addEventListener("click", function (e) {
+                    //鼠标点击提示后，恢复焦点到输入框
+                    input.focus();
+                    input.value = e.target.innerText;
+                    close();
+                });
+            }
+        }
+
+        //输入框获得焦点时，显示提示框
+        input.addEventListener("focus", function () {
+            if (input.value) {
+                open();
+            }
+            //重置默认选项
+            if (ul.firstChild) {
+                ul.firstChild.style.backgroundColor = "lightblue";
+            }
+        });
+
+        //输入框失焦时，隐藏提示框：
+        //由于鼠标点击提示，会造成输入框失焦，造成还没有将提示输入到输入框中时，提示框就已经被关闭，因此无法再进行输入操作。判断如果是鼠标点击提示，则不进行操作，由点击事件控制；如果不是点击提示，则立即关闭提示窗口
+        input.addEventListener("blur", function () {
+            var flag = false;
+            for (var i = 0; i < ul.childNodes.length; i++) {
+                if (ul.childNodes[i].style.backgroundColor === "lightgreen") {
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                close();
+            }
+        });
+
+        //键盘按下事件
+        var index = 0;
+        input.addEventListener("keydown", addkeyboard);
+
+        function addkeyboard(e) {
+            if (ul.style.display === "block") {
+                if (e.keyCode === 38) {
+                    if (index === 0) {
+                        ul.childNodes[0].style.backgroundColor = "";
+                        index = ul.childNodes.length - 1;
+                        ul.childNodes[index].style.backgroundColor = "lightblue";
+                    } else {
+                        ul.childNodes[index].style.backgroundColor = "";
+                        index = index - 1;
+                        ul.childNodes[index].style.backgroundColor = "lightblue";
+                    }
+                } else if (e.keyCode === 40) {
+                    if (index === ul.childNodes.length - 1) {
+                        ul.childNodes[ul.childNodes.length - 1].style.backgroundColor = "";
+                        index = 0;
+                        ul.childNodes[index].style.backgroundColor = "lightblue";
+                    } else {
+                        ul.childNodes[index].style.backgroundColor = "";
+                        index = index + 1;
+                        ul.childNodes[index].style.backgroundColor = "lightblue";
+                    }
+                } else if (e.keyCode === 13) {
+                    input.value = ul.childNodes[index].innerText;
+                    close();
+                } else
+                    //按ESC，全选
+                    if (e.keyCode === 27) {
+                        input.select();
+                    }
+            }
+
+        }
+
+        //删除空格
+        function trim() {
+            var input = document.querySelector("input").value;
+            var result = "";
+            input = input.split("");
+            for (var i = 0; i < input.length; i++) {
+                if (input[i] == "\u0020" || input[i] == "\u3000") {
+                    input.splice(i, 1);
+                    i--;
+                }
+            }
+
+            for (var i = 0; i < input.length; i++) {
+                if (input[input.length - 1] == "\u0020" || input[input.length - 1] == "\u3000") {
+                    input.splice(-(i + 1), 1);
+                    i--;
+                }
+            }
+
+            result = input.join("").toString();
+            return result;
+        }
+
+        //生成提示内容
+        function content(result) {
+            var arr = [];
+            if (result.search(/@/) !== -1) {
+                var prefix = result.slice(0, result.search(/@/));
+                var suffix = result.slice(result.search(/@/) + 1);
+                var reg = new RegExp("^" + suffix);
+                for (var i = 0; i < postfixList.length; i++) {
+                    var li = document.createElement("li");
+                    if (postfixList[i].search(reg) !== -1) {
+                        li.innerText = prefix + "@" + postfixList[i];
+                        arr.push(li);
+                    }
+                }
+                if (arr.length === 0) {
+                    for (var i = 0; i < postfixList.length; i++) {
+                        var li = document.createElement("li");
+                        li.innerText = prefix + "@" + postfixList[i];
+                        arr.push(li);
+                    }
+                }
+            } else {
+                for (var i = 0; i < postfixList.length; i++) {
+                    var li = document.createElement("li");
+                    li.innerText = result + "@" + postfixList[i];
+                    arr.push(li);
+                }
+            }
+            return arr;
+        }
+
+        //将提示内容添加到ul中
+        function tips(result) {
+            for (var i = 0; i < postfixList.length; i++) {
+                var li = result[i];
+                if (li) {
+                    if (ul.childNodes[i]) {
+                        ul.replaceChild(li, ul.childNodes[i]);
+                    } else {
+                        ul.appendChild(li);
+                    }
+                } else {
+                    if (ul.childNodes[i]) {
+                        ul.removeChild(ul.childNodes[i]);
+                        i--;
+                    }
+                }
+            }
+            //输入改变时，标志归零
+            index = 0;
+            ul.childNodes[0].style.backgroundColor = "lightblue";
+        }
+
+        //控制提示框的显示
+        function display(result) {
+            if (result === "") {
+                close();
+            } else {
+                open();
+            }
+        }
+
+        //隐藏提示框
+        function close() {
+            ul.style.display = "none";
+        }
+
+        //显示提示框
+        function open() {
+            ul.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+        tr {
+            background: rgba(33, 168, 209, 0.329);
+        }
+    </style>
+    
+</head>
+<body>
+    <table>
+        <script>
+        for (var i = 1; i <= 9; i++) {
+            document.write("<tr>");
+            for (var j = 1; j <=i; j++) {
+                document.write("<td>" + j + "*" + i + "=" + i*j + "</td>");
+            }
+            document.write("</tr>");
+        }
+    </script>
+    </table>
+</body>
+</html>

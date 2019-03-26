@@ -1,0 +1,17 @@
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+.row {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+p.row {
+  margin-right: 30px;
+}
