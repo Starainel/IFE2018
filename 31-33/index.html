@@ -4,25 +4,191 @@
 <head>
     <meta charset="utf-8">
     <title>Page Title</title>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
-    <select name="" id="region-select">
-        <option value="easternChian">华东</option>
-        <option value="northernChina">华北</option>
-        <option value="southernChina">华南</option>
-    </select>
+    <form action="">
+        <span>地区：</span>
+        <input type="checkbox" name="region-select" value="华东" checked><span>华东</span>
+        <input type="checkbox" name="region-select" value="华北"><span>华北</span>
+        <input type="checkbox" name="region-select" value="华南"><span>华南</span>
+        <input type="checkbox" id="region-all"><span>全选</span>
+        <br>
+        <span>产品：</span>
+        <input type="checkbox" name="product-select" value="手机" checked><span>手机</span>
+        <input type="checkbox" name="product-select" value="笔记本"><span>笔记本</span>
+        <input type="checkbox" name="product-select" value="智能音箱"><span>智能音箱</span>
+        <input type="checkbox" id="product-all"><span>全选</span>
+    </form>
+
     <div id="table-wrapper"></div>
 
     <script>
-        var region = document.querySelector("#region-select");
-        region.onchange = function () {
-            console.log(1);
+        var form = document.querySelector("form");
+        var region = document.querySelectorAll("[name = region-select]");
+        var product = document.querySelectorAll("[name = product-select]")
+        var div = document.querySelector("#table-wrapper");
+        var regionAll = document.querySelector("#region-all");
+        var productAll = document.querySelector("#product-all");
+
+        form.onchange = function () {
+            table(getData());
         }
 
-        function date() {
-            
+        //全选事件
+        function ckbox(type, num, allbox) {
+            var count = 1;
+            for (var i = 0; i < type.length; i++) {
+                type[i].addEventListener("click", function (e) {
+                    if (e.target.checked) {
+                        count++;
+                    } else if (count > 1) {
+                        count--;
+                    } else {
+                        e.target.checked = true;
+                        alert("不能全部取消！");
+                    }
+
+                    if (count === num) {
+                        allbox.checked = true;
+                    } else {
+                        allbox.checked = false;
+                    }
+                });
+            }
+            allbox.addEventListener("click", function () {
+                if (count !== num && allbox.checked) {
+                    count = num;
+                    for (var j = 0; j < type.length; j++) {
+                        type[j].checked = true;
+                    }
+                } else if (count === num && !allbox.checked) {
+                    allbox.checked = true;
+                    alert("不能全部取消！");
+                }
+            });
         }
+
+        ckbox(region, 3, regionAll);
+        ckbox(product, 3, productAll);
+
+        //查找所有原始数据
+        function sortData(arr) {
+
+            for (var i = 0; i < sourceData.length; i++) {
+                if (sourceData[i].region === arr[0] && sourceData[i].product === arr[1]) {
+                    return sourceData[i];
+                }
+            }
+        }
+
+        //筛选数据
+        function getData() {
+            var list = [];
+            var regionCnt = 0;
+            var productCnt = 0;
+            for (var i = 0; i < 3; i++) {
+                if (product[i].checked) {
+                    productCnt++;
+                    for (var j = 0; j < 3; j++) {
+                        if (region[j].checked) {
+                            if (i === 0) {
+                                regionCnt++;
+                            }
+                            list.push(sortData([region[j].value, product[i].value]));
+                        }
+                    }
+                }
+            }
+
+            return [list, regionCnt, productCnt];
+        }
+
+        function table(dataArr) {
+            data = dataArr[0];
+            regionCnt = dataArr[1];
+            productCnt = dataArr[2];
+
+            table = document.querySelector("table");
+            if (table) {
+                div.removeChild(table);
+            }
+
+
+            //表头
+            var table = document.createElement("table");
+            var trArr = [];
+            for (var i = -1; i < data.length; i++) {
+                trArr[i] = document.createElement("tr");
+            }
+
+            var th1 = document.createElement("th");
+            var th2 = document.createElement("th");
+            if (regionCnt === 1) {
+                th1.innerText = "地区";
+                th2.innerText = "商品";
+                trArr[-1].appendChild(th1);
+                trArr[-1].appendChild(th2);
+            } else {
+                th1.innerText = "商品";
+                th2.innerText = "地区";
+                trArr[-1].appendChild(th1);
+                trArr[-1].appendChild(th2);
+            }
+
+            for (var i = 1; i <= 12; i++) {
+                var th = document.createElement("th");
+                th.innerText = i + "月";
+                trArr[-1].appendChild(th);
+            }
+            table.appendChild(trArr[-1]);
+            div.appendChild(table);
+
+            //表格主体
+            for (var i = 0; i < data.length; i++) {
+
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                td1.innerText = data[i].product;
+                td2.innerText = data[i].region;
+                trArr[i].appendChild(td1);
+                trArr[i].appendChild(td2);
+                if (regionCnt === 1) {
+                    trArr[i].removeChild(trArr[i].firstChild);
+                    var td2 = document.createElement("td");
+                    td2.innerText = data[i].product;
+                    trArr[i].appendChild(td2);
+                }
+
+                for (var j = 0; j < 12; j++) {
+                    var td = document.createElement("td");
+                    td.innerText = data[i].sale[j];
+                    trArr[i].appendChild(td);
+                }
+                table.appendChild(trArr[i]);
+            }
+
+            //如果有连续的名称相同，则合并单元格
+            var trs = document.querySelectorAll("tr");
+            for (var j = 1; j < trs.length; j++) {
+                var firstCol = trs[j].firstChild.innerText;
+                for (var k = j + 1; k < trs.length; k++) {
+                    var firstCol1 = trs[k].firstChild.innerText;
+                    if (firstCol === firstCol1) {
+                        trs[j].firstChild.setAttribute("rowspan", k - j + 1);
+                        trs[k].removeChild(trs[k].firstChild);
+                    }
+                }
+            }
+        }
+
+
 
 
 
