@@ -39,30 +39,30 @@ body {
 }
 
 .function span::before {
-    content: url("/ife/12-15/12_15-assets/Active Highlight.png");
+    content: url("/12-15/image/ActiveHighlight.png");
     position: absolute;
     top: 40px;
 }
 
 .message {
-    background: url("/ife/12-15/12_15-assets/Item 1.png") no-repeat center,
+    background: url("/12-15/image/Item1.png") no-repeat center,
         linear-gradient(90deg, rgb(25, 145, 235) 0%, rgb(46, 161, 248) 100%);
 }
 
 
 .rocket {
-    background: url("/ife/12-15/12_15-assets/Item 2.png") no-repeat center,
+    background: url("/12-15/image/Item2.png") no-repeat center,
         linear-gradient(90deg, rgb(127, 91, 230) 1%, rgb(157, 143, 227) 100%);
 }
 
 .game {
-    background: url("/ife/12-15/12_15-assets/Item 3.png") no-repeat center,
+    background: url("/12-15/image/Item3.png") no-repeat center,
         linear-gradient(-90deg, rgb(244, 84, 56) 0%, rgb(203, 39, 10) 100%);
 }
 
 .add {
     box-sizing: border-box;
-    background: url("/ife/12-15/12_15-assets/Plus Icon.png") no-repeat center;
+    background: url("/12-15/image/PlusIcon.png") no-repeat center;
     border: 3px solid rgb(45, 56, 72);
 }
 
@@ -78,12 +78,12 @@ body {
 
 .grid {
     left: 26px;
-    background: url("/ife/12-15/12_15-assets/Grid.png");
+    background: url("/12-15/image/Grid.png");
 }
 
 .setting {
     right: 26px;
-    background: url("/ife/12-15/12_15-assets/Settings.png")
+    background: url("/12-15/image/Settings.png")
 }
 
 
@@ -110,7 +110,7 @@ body {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url("/ife/12-15/12_15-assets/Settings.png");
+    background: url("/12-15/image/Settings.png");
     position: absolute;
     right: 0;
     top: 9px;
@@ -167,7 +167,7 @@ body {
 }
 
 .menu .sign {
-    content: url("/ife/12-15/12_15-assets/Active Highlight.png");
+    content: url("/12-15/image/ActiveHighlight.png");
     position: absolute;
     left: -30px;
     top: 5px;
@@ -244,7 +244,7 @@ body {
     position: absolute;
     left: 27px;
     top: 25px;
-    background: url("/ife/12-15/12_15-assets/Status.png") no-repeat center,
+    background: url("/12-15/image/Status.png") no-repeat center,
     white;
     cursor: pointer;
 }
@@ -268,7 +268,7 @@ body {
     display: block;
     width: 11px;
     height: 7px;
-    background: url("/ife/12-15/12_15-assets/dropdown.png") no-repeat center;
+    background: url("/12-15/image/dropdown.png") no-repeat center;
     position: absolute;
     right: 0;
     top: 20px;
@@ -319,7 +319,7 @@ input::placeholder {
     width: 16px;
     height: 16px;
     border: none;
-    background: url("/ife/12-15/12_15-assets/Search icon.png");
+    background: url("/12-15/image/Searchicon.png");
     position: absolute;
     right: 44px;
     top: 26px;
@@ -473,33 +473,33 @@ input::placeholder {
 
 .addpep {
     border-radius: 4px 0 0 4px;
-    background: url("/ife/12-15/12_15-assets/User icon.png") no-repeat center,
+    background: url("/12-15/image/Usericon.png") no-repeat center,
     linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
 }
 
 .msgmenu .send {
     border-left: none;
     border-right: none;
-    background: url("/ife/12-15/12_15-assets/Upload icon.png") no-repeat center,
+    background: url("/12-15/image/Uploadicon.png") no-repeat center,
     linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
 }
 
 .trash {
     border-radius: 0 4px 4px 0;
-    background: url("/ife/12-15/12_15-assets/Trash icon.png") no-repeat center,
+    background: url("/12-15/image/Trashicon.png") no-repeat center,
     linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
 }
 
 .goback {
     border-radius: 4px 0 0 4px;
-    background: url("/ife/12-15/12_15-assets/Arrow left.png") no-repeat center,
+    background: url("/12-15/image/Arrowleft.png") no-repeat center,
     linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
 }
 
 .msgmenu .goahead {
     border-left: none;
     border-radius: 0 4px 4px 0;
-    background: url("/ife/12-15/12_15-assets/Arrow right.png") no-repeat center,
+    background: url("/12-15/image/Arrowright.png") no-repeat center,
     linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
 }
 
@@ -595,7 +595,7 @@ input::placeholder {
 .textarea button {
     box-sizing: border-box;
     width: 54px;
-    background: url("/ife/12-15/12_15-assets/Add icon.png") no-repeat center;
+    background: url("/12-15/image/Addicon.png") no-repeat center;
     border: 1px solid rgb(206, 208, 218);
     border-radius: 4px 0 0 4px;
 }
