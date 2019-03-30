@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+</head>
+<body>
+    <script>
+        var canvas = document.createElement("canvas");
+        canvas.setAttribute("width", "1920");
+        canvas.setAttribute("height", "1080");
+        //兼容性
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            //直线
+            ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.lineTo(300, 100);
+            ctx.stroke();
+
+            //矩形
+            ctx.strokeRect(100, 150, 200, 100);
+            
+            //圆
+            ctx.beginPath();
+            ctx.arc(200, 400, 100, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            //文字
+            ctx.font = "50px serif";
+            ctx.fillText("Test", 100, 600);
+
+            //时钟
+            ctx.beginPath();
+            ctx.arc(500, 200, 100, 0, Math.PI * 2);
+            ctx.moveTo(500, 200);
+            ctx.arc(500, 200, 3, 0, Math.PI * 2);
+            ctx.moveTo(500, 200);
+            ctx.lineTo(500, 120);
+            ctx.moveTo(500, 200);
+            ctx.lineTo(550, 200);
+            ctx.stroke();
+
+            //云
+            ctx.fillStyle = "rgb(4, 180, 250)";
+            ctx.strokeStyle = "rgba(112, 238, 255, 0.664)";
+            ctx.beginPath();
+            ctx.moveTo(500, 500);
+            ctx.quadraticCurveTo(490, 450, 530, 470);
+            ctx.quadraticCurveTo(520, 410, 580, 430);
+            ctx.quadraticCurveTo(660, 380, 640, 500);
+            ctx.bezierCurveTo(520, 510, 590, 490, 500, 500);
+            ctx.fill();
+            ctx.stroke();
+
+            document.body.appendChild(canvas);
+        } else {
+            alert("不支持Canvas！");
+        }
+    </script>
+</body>
+</html>
