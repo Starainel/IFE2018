@@ -56,9 +56,30 @@ function table(dataArr) {
             td.innerText = data[i].sale[j];
             trArr[i].appendChild(td);
         }
+
+        trArr[i].addEventListener("mouseover", function(e) {
+            var bar = document.querySelector("svg");
+            var line = document.querySelector("canvas");
+            if (bar && line) {
+                document.body.removeChild(bar);
+                document.body.removeChild(line);
+            }
+
+            currentArr = [];
+            var tdArr = e.target.parentNode.childNodes
+            for (var j = 0; j < tdArr.length; j++) {
+                if (tdArr.length === 13) {
+                    currentArr[j + 1] = tdArr[j].innerText;
+                } else {
+                    currentArr[j] = tdArr[j].innerText;
+                }
+            }
+            barChart();
+            lineChart();
+        });
         table.appendChild(trArr[i]);
     }
-
+    
     //合并单元格
     var trs = document.querySelectorAll("tr");
     for (var j = 1; j < trs.length; j++) {
