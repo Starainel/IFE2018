@@ -1,7 +1,18 @@
 //监听表单
 form.addEventListener("change", function () {
     table(getData());
+    //所选数据
+    lineArr = getData()[0];
+    if (currentArr) {
+        lineChart(lineArr.length);
+    }
 });
+
+div.addEventListener("mouseout", function () {
+    lineChart(lineArr.length);
+})
+
+var lineArr = [];
 
 //默认选中第一项
 region[0].click();
@@ -13,3 +24,5 @@ var obj = Object.assign({}, getData()[0][0]);
 var currentArr = Object.assign([], getData()[0][0].sale);
 currentArr.unshift(obj.region, obj.product);
 
+barChart();
+lineChart(lineArr.length);

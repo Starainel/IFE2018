@@ -57,14 +57,8 @@ function table(dataArr) {
             trArr[i].appendChild(td);
         }
 
+        //鼠标滑过改变图表
         trArr[i].addEventListener("mouseover", function(e) {
-            var bar = document.querySelector("svg");
-            var line = document.querySelector("canvas");
-            if (bar && line) {
-                document.body.removeChild(bar);
-                document.body.removeChild(line);
-            }
-
             currentArr = [];
             var tdArr = e.target.parentNode.childNodes
             for (var j = 0; j < tdArr.length; j++) {
@@ -75,8 +69,13 @@ function table(dataArr) {
                 }
             }
             barChart();
-            lineChart();
+            lineChart(1);
         });
+
+        //获取多个折线图的数据
+        lineArr = [];
+        lineArr.push(data[i]);
+
         table.appendChild(trArr[i]);
     }
     

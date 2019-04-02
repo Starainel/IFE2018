@@ -1,6 +1,7 @@
 var form = document.querySelector("form");
 var region = document.querySelectorAll("[name = region-select]");
-var product = document.querySelectorAll("[name = product-select]")
+var product = document.querySelectorAll("[name = product-select]");
+var chartBox = document.querySelector("#chart-wrapper");
 var div = document.querySelector("#table-wrapper");
 var regionAll = document.querySelector("#region-all");
 var productAll = document.querySelector("#product-all");

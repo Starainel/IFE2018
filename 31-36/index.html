@@ -5,24 +5,30 @@
     <meta charset="utf-8">
     <title>Page Title</title>
     <style>
-        th,
-        td {
-            border: 1px solid black;
+        table {
+            width: 640px;
+            border-collapse: collapse;
         }
 
-        table {
-            position: absolute;
-            bottom: 30px;
-            right: 0;
+        th,td {
+            border: 1px solid rgb(10, 180, 223);
+            text-align: center;
+        }
+
+        #chart-wrapper, form, #table-wrapper {
+            width: 1300px;
+            margin: 0 auto;
         }
 
         svg {
-            width: 50%;
-            float: left;
+            width: 640px;
+            height: 360px;
+            display: block;
         }
 
         canvas {
             width: 640px;
+            height: 360px;
         }
     </style>
 </head>
@@ -42,16 +48,16 @@
         <input type="checkbox" id="product-all"><span>全选</span>
     </form>
 
+    <div id="chart-wrapper"></div>
     <div id="table-wrapper"></div>
 
     <script src="js/ife31data.js"></script>
     <script src="js/checkbox.js"></script>
     <script src="js/sortdata.js"></script>
     <script src="js/table.js"></script>
-    <script src="js/app.js"></script>
-
     <script src="js/bar.js"></script>
     <script src="js/line.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
