@@ -1,4 +1,5 @@
 function barChart() {
+    //绘制图表之前先删除之前的图表
     var bar = document.querySelector("svg");
     if (bar) {
         chartBox.removeChild(bar);
@@ -12,6 +13,7 @@ function barChart() {
     bar.setAttribute("baseProfile", "full");
     bar.setAttribute("viewbox", "0 0 1280 720");
 
+    //手动缩放
     var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("transform", "scale(0.5)");
 
@@ -26,21 +28,31 @@ function barChart() {
     g.appendChild(path);
 
     //柱子
-    var saleArr = currentArr.slice(2);
-    saleArr.sort(function (a, b) {
+    var allData = [];
+    for (var i = 0; i < currentArr.length; i++) {
+        var one = currentArr[i].sale;
+        allData = allData.concat(one);
+    }
+    allData.sort(function (a, b) {
         return b - a;
     });
-    var rate = 600 / saleArr[0];
-    saleArr = currentArr.slice(2);
+    var rate = 600 / allData[0];
+    for (var j = 0; j < currentArr.length; j++) {
+        draw(currentArr, rate);
+    }
 
-    for (var i = 0; i < 12; i++) {
-        var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        rect.setAttribute("x", 40 + 48.333 * (2 * i + 1));
-        rect.setAttribute("y", 680 - saleArr[i] * rate);
-        rect.setAttribute("width", 48.333);
-        rect.setAttribute("height", saleArr[i] * rate);
-        rect.setAttribute("style", "fill:rgb(1, 148, 247)");
-        g.appendChild(rect);
+    function draw(currentArr, rate) {
+        for (var h = 0; h < currentArr.length; h++) {
+            for (var i = 0; i < 12; i++) {
+                var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", 40 + 32.222 * (i + 1) + 64.444 * i + 64.444 / currentArr.length * h);
+                rect.setAttribute("y", 680 - currentArr[h].sale[i] * rate);
+                rect.setAttribute("width", 64.444 / currentArr.length);
+                rect.setAttribute("height", currentArr[h].sale[i] * rate);
+                rect.setAttribute("fill", color[h]);
+                g.appendChild(rect);
+            }
+        }
     }
 
     //两根轴线

@@ -1,5 +1,10 @@
+//全局变量用于保存单个或者多个数据
+var currentArr;
 //生成表格
 function table(dataArr) {
+    //重新生成表格时，清空
+    currentArr = [];
+
     data = dataArr[0];
     regionCnt = dataArr[1];
     productCnt = dataArr[2];
@@ -7,7 +12,7 @@ function table(dataArr) {
     //非第一次生成时，删除之前的表格
     table = document.querySelector("table");
     if (table) {
-        div.removeChild(table);
+        tableBox.removeChild(table);
     }
 
     //表头
@@ -35,7 +40,7 @@ function table(dataArr) {
         trArr[-1].appendChild(th);
     }
     table.appendChild(trArr[-1]);
-    div.appendChild(table);
+    tableBox.appendChild(table);
 
     //表格主体
     for (var i = 0; i < data.length; i++) {
@@ -57,28 +62,35 @@ function table(dataArr) {
             trArr[i].appendChild(td);
         }
 
+        //添加标签
+        trArr[i].tag = data[i].product + data[i].region;
+
         //鼠标滑过改变图表
-        trArr[i].addEventListener("mouseover", function(e) {
-            currentArr = [];
-            var tdArr = e.target.parentNode.childNodes
-            for (var j = 0; j < tdArr.length; j++) {
-                if (tdArr.length === 13) {
-                    currentArr[j + 1] = tdArr[j].innerText;
-                } else {
-                    currentArr[j] = tdArr[j].innerText;
+        trArr[i].addEventListener("mouseover", function (e) {
+            if (e.target.rowSpan === 1) {
+                currentArr = [{}];
+                //标签写法
+                for (var k = 0; k < data.length; k++) {
+                    if (e.currentTarget.tag === data[k].product + data[k].region) {
+                        var getName = Object.assign({}, data[k]);
+                        var getSale = Object.assign([], data[k].sale);
+                        currentArr[0].product = getName.product;
+                        currentArr[0].region = getName.region;
+                        currentArr[0].sale = getSale;
+                    }
                 }
+                //绘制当前图表
+                barChart();
+                lineChart();
             }
-            barChart();
-            lineChart(1);
         });
 
-        //获取多个折线图的数据
-        lineArr = [];
-        lineArr.push(data[i]);
+        //获取所有需要生成图表的数据
+        currentArr.push(data[i]);
 
         table.appendChild(trArr[i]);
     }
-    
+
     //合并单元格
     var trs = document.querySelectorAll("tr");
     for (var j = 1; j < trs.length; j++) {
@@ -91,4 +103,15 @@ function table(dataArr) {
             }
         }
     }
+
+    //鼠标移出表格，恢复多项数据状态
+    var table = document.querySelector("table");
+    table.addEventListener("mouseout", function () {
+        currentArr = [];
+        for (var i = 0; i < data.length; i++) {
+            currentArr.push(data[i]);
+        }
+        barChart();
+        lineChart();
+    });
 }

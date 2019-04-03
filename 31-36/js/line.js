@@ -1,4 +1,5 @@
-function lineChart(num) {
+function lineChart() {
+    //绘制图表之前先删除之前的图表
     var line = document.querySelector("canvas");
     if (line) {
         chartBox.removeChild(line);
@@ -24,41 +25,26 @@ function lineChart(num) {
         ctx.stroke();
 
 
-        if (num === 1) {
-            var saleArr = currentArr.slice(2);
-            saleArr.sort(function (a, b) {
-                return b - a;
-            });
-            var rate = 600 / saleArr[0];
-            saleArr = currentArr.slice(2);
-            draw(saleArr, rate);
-
-        } else if (num > 1) {
-            var allLineData = [];
-            for (var i = 0; i < lineArr.length; i++) {
-                var lineArrD = lineArr[i].sale.slice(2);
-                allLineData = allLineData.concat(lineArrD);
-            }
-            allLineData.sort(function (a, b) {
-                return b - a;
-            });
-            var rate = 600 / allLineData[0];
-            for (var j = 0; j < lineArr.length; j++) {
-                draw(lineArr[j].sale, rate);
-            }
-
+        var allData = [];
+        for (var i = 0; i < currentArr.length; i++) {
+            var one = currentArr[i].sale;
+            allData = allData.concat(one);
         }
+        allData.sort(function (a, b) {
+            return b - a;
+        });
+        var rate = 600 / allData[0];
+        draw(currentArr, rate);
 
-        function draw(saleArr, rate) {
-            randomColor = "rgb(" + Math.round(Math.random() * 100) * 2.55 + "," + Math.round(Math.random() * 100) * 2.55 + "," + Math.round(Math.random() * 100) * 2.55 + ")";
-
-            //折线
-            ctx.strokeStyle = randomColor;
+        function draw(currentArr, rate) {
+            for (var n = 0; n < currentArr.length; n++) {
+                //折线
+            ctx.strokeStyle = color[n];
             ctx.lineJoin = "round";
             ctx.beginPath();
             for (var i = 0; i < 12; i++) {
                 var x = 40 + (i + 1) * 96.666;
-                var y = 680 - saleArr[i] * rate;
+                var y = 680 - currentArr[n].sale[i] * rate;
                 if (i === 0) {
                     ctx.moveTo(x, y);
                 } else {
@@ -68,17 +54,19 @@ function lineChart(num) {
             ctx.stroke();
 
             //数据点
-            ctx.fillStyle = randomColor;
+            ctx.fillStyle = color[n];
             ctx.lineWidth = 5;
             ctx.beginPath();
             for (var j = 0; j < 12; j++) {
                 var x = 40 + (j + 1) * 96.666;
-                var y = 680 - saleArr[j] * rate;
+                var y = 680 - currentArr[n].sale[j] * rate;
                 ctx.moveTo(x, y);
                 ctx.arc(x, y, 8, 0, Math.PI * 2);
                 ctx.stroke();
                 ctx.fill();
             }
+            }
+            
         }
         chartBox.appendChild(canvas);
     }
