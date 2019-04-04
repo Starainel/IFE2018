@@ -4,32 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Page Title</title>
-    <style>
-        table {
-            width: 1300px;
-            border-collapse: collapse;
-        }
-
-        th,td {
-            border: 1px solid rgb(10, 180, 223);
-            text-align: center;
-        }
-
-        #chart-wrapper, form, #table-wrapper {
-            width: 1300px;
-            margin: 0 auto;
-        }
-
-        svg {
-            width: 640px;
-            height: 360px;
-        }
-
-        canvas {
-            width: 640px;
-            height: 360px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -48,6 +23,7 @@
     </form>
 
     <div id="chart-wrapper"></div>
+    <div><button id="save-btn">保存</button></div>
     <div id="table-wrapper"></div>
 
     <script src="js/ife31data.js"></script>

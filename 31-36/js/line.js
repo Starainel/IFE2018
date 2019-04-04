@@ -1,4 +1,4 @@
-function lineChart() {
+function lineChart(colorIndex) {
     //绘制图表之前先删除之前的图表
     var line = document.querySelector("canvas");
     if (line) {
@@ -24,7 +24,7 @@ function lineChart() {
         ctx.lineTo(1230, 690);
         ctx.stroke();
 
-
+        //绘制折线（一个或多个）
         var allData = [];
         for (var i = 0; i < currentArr.length; i++) {
             var one = currentArr[i].sale;
@@ -39,7 +39,7 @@ function lineChart() {
         function draw(currentArr, rate) {
             for (var n = 0; n < currentArr.length; n++) {
                 //折线
-            ctx.strokeStyle = color[n];
+            ctx.strokeStyle = color[colorIndex ? colorIndex : n];
             ctx.lineJoin = "round";
             ctx.beginPath();
             for (var i = 0; i < 12; i++) {
@@ -54,7 +54,7 @@ function lineChart() {
             ctx.stroke();
 
             //数据点
-            ctx.fillStyle = color[n];
+            ctx.fillStyle = color[colorIndex ? colorIndex : n];
             ctx.lineWidth = 5;
             ctx.beginPath();
             for (var j = 0; j < 12; j++) {

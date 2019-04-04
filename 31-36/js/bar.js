@@ -1,4 +1,4 @@
-function barChart() {
+function barChart(colorIndex) {
     //绘制图表之前先删除之前的图表
     var bar = document.querySelector("svg");
     if (bar) {
@@ -27,7 +27,7 @@ function barChart() {
     path.setAttribute("style", "fill:white;stroke:black;stroke-width:3");
     g.appendChild(path);
 
-    //柱子
+    //绘制柱子（一个或多个）
     var allData = [];
     for (var i = 0; i < currentArr.length; i++) {
         var one = currentArr[i].sale;
@@ -49,7 +49,7 @@ function barChart() {
                 rect.setAttribute("y", 680 - currentArr[h].sale[i] * rate);
                 rect.setAttribute("width", 64.444 / currentArr.length);
                 rect.setAttribute("height", currentArr[h].sale[i] * rate);
-                rect.setAttribute("fill", color[h]);
+                rect.setAttribute("fill", color[colorIndex ? colorIndex : h]);
                 g.appendChild(rect);
             }
         }

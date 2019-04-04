@@ -9,7 +9,7 @@ var productAll = document.querySelector("#product-all");
 ckbox(region, 3, regionAll);
 ckbox(product, 3, productAll);
 
-//全选事件
+//checkbox的操作逻辑
 function ckbox(type, num, allbox) {
     var count = 0;
     for (var i = 0; i < type.length; i++) {

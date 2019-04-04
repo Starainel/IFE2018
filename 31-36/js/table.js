@@ -58,7 +58,26 @@ function table(dataArr) {
         }
         for (var j = 0; j < 12; j++) {
             var td = document.createElement("td");
-            td.innerText = data[i].sale[j];
+            //在td中嵌入input
+            var input = document.createElement("input");
+            input.value = data[i].sale[j];
+            input.type = "number";
+            //设置恢复值
+            input.back = data[i].sale[j];
+            //输入框失焦时判断输入内容是否合法
+            input.addEventListener("blur", function (e) {
+                var val = e.target.value;
+                if (val < 0 || Math.floor(val) != val) {
+                    alert("输入不合法！");
+                    //如果不合法，则恢复到之前的数据
+                    e.currentTarget.value = input.back;
+                } else {
+                    //如果合法，更新恢复值
+                    input.back = e.currentTarget.value;
+                }
+            });
+
+            td.appendChild(input);
             trArr[i].appendChild(td);
         }
 
@@ -67,7 +86,7 @@ function table(dataArr) {
 
         //鼠标滑过改变图表
         trArr[i].addEventListener("mouseover", function (e) {
-            if (e.target.rowSpan === 1) {
+            if (e.target.nodeName === "TD" ? e.target.rowSpan === 1 : e.target.parentNode.rowSpan === 1) {
                 currentArr = [{}];
                 //标签写法
                 for (var k = 0; k < data.length; k++) {
@@ -77,11 +96,12 @@ function table(dataArr) {
                         currentArr[0].product = getName.product;
                         currentArr[0].region = getName.region;
                         currentArr[0].sale = getSale;
+                        break;
                     }
                 }
-                //绘制当前图表
-                barChart();
-                lineChart();
+                //绘制当前的单项图表，k：使用指定的颜色
+                barChart(k);
+                lineChart(k);
             }
         });
 
