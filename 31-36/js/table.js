@@ -64,18 +64,90 @@ function table(dataArr) {
             input.type = "number";
             //设置恢复值
             input.back = data[i].sale[j];
-            //输入框失焦时判断输入内容是否合法
-            input.addEventListener("blur", function (e) {
-                var val = e.target.value;
-                if (val < 0 || Math.floor(val) != val) {
-                    alert("输入不合法！");
-                    //如果不合法，则恢复到之前的数据
-                    e.currentTarget.value = input.back;
-                } else {
-                    //如果合法，更新恢复值
-                    input.back = e.currentTarget.value;
+
+            //点击单元格生成确定和取消按钮
+            td.addEventListener("click", function (e) {
+                //多次点击，保持一对按钮
+                if (!table.querySelector("button")) {
+                    var btnOk = document.createElement("button");
+                    var btnCnc = document.createElement("button");
+                    btnOk.innerText = "√";
+                    btnCnc.innerText = "×";
+                    e.currentTarget.firstChild.style.width = "65%";
+                    //添加自定义属性，用于判断input失焦时是否进行取消操作
+                    btnOk.addEventListener("mouseover", function () {
+                        btnOk.tag = true;
+                    });
+                    btnOk.addEventListener("mouseout", function () {
+                        btnOk.tag = false;
+                    });
+                    btnCnc.addEventListener("mouseover", function () {
+                        btnCnc.tag = true;
+                    });
+                    btnCnc.addEventListener("mouseout", function () {
+                        btnCnc.tag = false;
+                    });
+                    //确定按钮
+                    btnOk.addEventListener("click", function (e) {
+                        var val = e.currentTarget.parentNode.firstChild.value;
+                        if (val < 0 || Math.floor(val) != val) {
+                            alert("输入不合法！");
+                            //如果不合法，则恢复到之前的数据
+                            e.currentTarget.parentNode.firstChild.value = e.currentTarget.parentNode.firstChild.back;
+                        } else {
+                            //如果合法，更新恢复值
+                            e.currentTarget.parentNode.firstChild.back = e.currentTarget.parentNode.firstChild.value;
+                        }
+                        cancel(e.currentTarget.parentNode);
+                        e.stopPropagation();
+                    });
+                    btnOk.addEventListener("blur", function (e) {
+                        if (!e.currentTarget.tag && !e.currentTarget.nextSibling.tag) {
+                            cancel(e.currentTarget.parentNode);
+                        }
+                    });
+                    //取消按钮
+                    btnCnc.addEventListener("click", function (e) {
+                        e.currentTarget.parentNode.firstChild.value = e.currentTarget.parentNode.firstChild.back;
+                        cancel(e.currentTarget.parentNode);
+                        //阻止冒泡到td
+                        e.stopPropagation();
+                    });
+                    btnCnc.addEventListener("blur", function (e) {
+                        if (!e.currentTarget.tag && !e.currentTarget.previousSibling.tag) {
+                            cancel(e.currentTarget.parentNode);
+                        }
+                    });
+                    e.currentTarget.appendChild(btnOk);
+                    e.currentTarget.appendChild(btnCnc);
                 }
             });
+
+            //单元格失焦时，取消操作
+            input.addEventListener("blur", function (e) {
+                if (e.currentTarget.nextSibling) {
+                    if (!e.currentTarget.nextSibling.tag && !e.currentTarget.nextSibling.nextSibling.tag) {
+                        cancel(e.currentTarget.parentNode);
+                        e.currentTarget.value = e.currentTarget.back;
+                    }
+                }
+            });
+
+            //ESC和ENTER操作
+            input.addEventListener("keydown", function (e) {
+                if (e.keyCode === 13) {
+                    e.currentTarget.nextSibling.click();
+                } else if (e.keyCode === 27) {
+                    e.currentTarget.nextSibling.nextSibling.click();
+                }
+            });
+
+            //隐藏按钮
+            function cancel(td) {
+                td.removeChild(td.querySelector("button"));
+                td.removeChild(td.querySelector("button"));
+                td.firstChild.removeAttribute("style");
+            }
 
             td.appendChild(input);
             trArr[i].appendChild(td);
