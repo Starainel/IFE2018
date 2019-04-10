@@ -43,7 +43,7 @@ function lineChart(colorIndex) {
             ctx.lineJoin = "round";
             ctx.beginPath();
             for (var i = 0; i < 12; i++) {
-                var x = 40 + (i + 1) * 96.666;
+                var x = 40 + 32.222 * (i * 3 + 2);
                 var y = 680 - currentArr[n].sale[i] * rate;
                 if (i === 0) {
                     ctx.moveTo(x, y);
@@ -58,7 +58,7 @@ function lineChart(colorIndex) {
             ctx.lineWidth = 5;
             ctx.beginPath();
             for (var j = 0; j < 12; j++) {
-                var x = 40 + (j + 1) * 96.666;
+                var x = 40 + 32.222 * (j * 3 + 2);
                 var y = 680 - currentArr[n].sale[j] * rate;
                 ctx.moveTo(x, y);
                 ctx.arc(x, y, 8, 0, Math.PI * 2);
@@ -66,8 +66,28 @@ function lineChart(colorIndex) {
                 ctx.fill();
             }
             }
-            
         }
+
+        //月份标志
+        ctx.fillStyle = "black";
+        ctx.font = "20px sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        for (var k = 0; k < 12; k++) {
+            ctx.fillText(k + 1 + "月", 40 + 32.222 * (k * 3 + 2), 705)
+        }
+
+        //销量标志
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 3;
+        for (var l = 0; l < 6; l++) {
+            ctx.fillText((allData[0] / 5) * l, 20, 80 + 120 * (5 - l));
+            ctx.beginPath();
+            ctx.moveTo(40, 80 + 120 * (5 - l));
+            ctx.lineTo(50, 80 + 120 * (5 - l));
+            ctx.stroke();
+        }
+
         chartBox.appendChild(canvas);
     }
 }

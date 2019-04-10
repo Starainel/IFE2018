@@ -1,3 +1,7 @@
+       html, body {
+           margin: 0;
+       }
+
        table {
            width: 1300px;
            border-collapse: collapse;
@@ -99,8 +103,8 @@
        }
 
        form {
-           border: 3px solid rgba(0, 132, 255, 0.425);
-           background-color: rgba(0, 195, 255, 0.562);
+           border: 2px solid rgba(0, 132, 255, 0.26);
+           background-color: rgba(0, 195, 255, 0.308);
        }
 
        svg {
