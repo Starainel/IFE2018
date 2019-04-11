@@ -15,8 +15,45 @@ for (var m = 0; m < 9; m++) {
 }
 
 //默认选中第一项
-region[0].click();
-product[0].click();
+//有hash时，不再默认选中第一项
+if (!location.hash) {
+    region[0].click();
+    region[0].checked = true;
+    product[0].click();
+    region[0].checked = true;
+}
+
+//读取hash，恢复页面
+readHash();
+
+function setHash(list) {
+    var hash = [];
+    for (var k = 0; k < list.length; k++) {
+        hash[k] = list[k].region + "," + list[k].product;
+    }
+    location.hash = encodeURIComponent(hash.join(";"));
+}
+
+function readHash() {
+    var hash = decodeURIComponent(location.hash).slice(1).split(";");
+    for (var l = 0; l < hash.length; l++) {
+        var one = hash[l].split(",");
+        for (var m = 0; m < 3; m++) {
+            if (region[m].value === one[0]) {
+                if (!region[m].checked) {
+                    region[m].click();
+                    region[m].checked = true;
+                }
+            }
+            if (product[m].value === one[1]) {
+                if (!product[m].checked) {
+                    product[m].click();
+                    product[m].checked = true;
+                }
+            }
+        }
+    }
+}
 
 //本地存储
 //点击按钮保存数据到本地存储

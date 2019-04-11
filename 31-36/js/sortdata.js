@@ -32,6 +32,10 @@ function getData() {
             }
         }
     }
+
+    //设置hash
+    setHash(list);
+
     return [list, regionCnt, productCnt];
 }
 
