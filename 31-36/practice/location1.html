@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>location</title>
+</head>
+
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+
+    <script>
+        var btn = document.querySelectorAll("button");
+        var div = document.querySelector("div");
+        for (var i = 0; i < 3; i++) {
+            btn[i].addEventListener("click", function (e) {
+                location.hash = e.currentTarget.innerHTML;
+            });
+        }
+
+        window.addEventListener("hashchange", function () {
+            div.innerHTML = location.hash.slice(1);
+        });
+
+        div.innerHTML = location.hash.slice(1);
+    </script>
+</body>
+
+</html>

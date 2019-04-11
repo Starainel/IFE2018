@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>location</title>
+</head>
+
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+
+
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+
+    <script>
+        var btn = document.querySelectorAll("button");
+        var div1 = document.querySelector("#contABC");
+        var div2 = document.querySelector("#contDEF");
+        var hash = location.hash ? location.hash.slice(1).split(",") : [];
+        for (var i = 0; i < 6; i++) {
+            if (i < 3) {
+                btn[i].addEventListener("click", function (e) {
+                    hash[0] = e.currentTarget.innerHTML;
+                    location.hash = hash.join();
+                });
+            } else {
+                btn[i].addEventListener("click", function (e) {
+                    hash[1] = e.currentTarget.innerHTML;
+                    location.hash = hash.join();
+                });
+            }
+        }
+
+        window.addEventListener("hashchange", function () {
+            div1.innerHTML = hash[0] ? hash[0] : "";
+            div2.innerHTML = hash[1] ? hash[1] : "";
+        });
+
+        div1.innerHTML = location.hash ? location.hash.slice(1).split(",")[0] : "";
+        div2.innerHTML = location.hash ? location.hash.slice(1).split(",")[1] : "";
+    </script>
+</body>
+
+</html>
