@@ -24,7 +24,7 @@
         var div1 = document.querySelector("#contABC");
         var div2 = document.querySelector("#contDEF");
         var hash = location.hash ? location.hash.slice(1).split(",") : [];
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < btn.length; i++) {
             if (i < 3) {
                 btn[i].addEventListener("click", function (e) {
                     hash[0] = e.currentTarget.innerHTML;
