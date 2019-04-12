@@ -18,13 +18,16 @@ for (var m = 0; m < 9; m++) {
 //有hash时，不再默认选中第一项
 if (!location.hash) {
     region[0].click();
-    region[0].checked = true;
     product[0].click();
-    region[0].checked = true;
 }
 
 //读取hash，恢复页面
 readHash();
+
+//前进/后退时，恢复之前的状态
+window.addEventListener("popstate", function () {
+    readHash();
+});
 
 function setHash(list) {
     var hash = [];
@@ -36,23 +39,51 @@ function setHash(list) {
 
 function readHash() {
     var hash = decodeURIComponent(location.hash).slice(1).split(";");
+    //勾选hash中存在的选项，并标记
     for (var l = 0; l < hash.length; l++) {
         var one = hash[l].split(",");
-        for (var m = 0; m < 3; m++) {
+        for (var m = 0; m < region.length; m++) {
             if (region[m].value === one[0]) {
+                region[m].flag = true;
                 if (!region[m].checked) {
                     region[m].click();
-                    region[m].checked = true;
                 }
             }
-            if (product[m].value === one[1]) {
-                if (!product[m].checked) {
-                    product[m].click();
-                    product[m].checked = true;
+        }
+        for (var n = 0; n < product.length; n++) {
+            if (product[n].value === one[1]) {
+                product[n].flag = true;
+                if (!product[n].checked) {
+                    product[n].click();
                 }
             }
         }
     }
+
+    //根据标记取消不存在的选项
+    for (var m = 0; m < region.length; m++) {
+        if (!region[m].flag) {
+            if (region[m].checked) {
+                region[m].click();
+            }
+        }
+    }
+    for (var n = 0; n < product.length; n++) {
+        if (!product[n].flag) {
+            if (product[n].checked) {
+                product[n].click();
+            }
+        }
+    }
+
+    //恢复标记
+    for (var m = 0; m < region.length; m++) {
+        region[m].flag = undefined;
+    }
+    for (var n = 0; n < product.length; n++) {
+        product[n].flag = undefined;
+    }
+
 }
 
 //本地存储
