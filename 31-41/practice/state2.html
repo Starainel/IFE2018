@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+</head>
+
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+
+
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+
+    <script>
+        var btn = document.querySelectorAll("button");
+        var div1 = document.querySelector("#contABC");
+        var div2 = document.querySelector("#contDEF");
+        var stateObj = stateObj ? stateObj : {};
+        for (var i = 0; i < btn.length; i++) {
+            if (i < 3) {
+                btn[i].addEventListener("click", function (e) {
+                    div1.innerHTML = e.currentTarget.innerHTML;
+                    stateObj.abc = e.currentTarget.innerHTML;
+                    history.replaceState(stateObj, "");
+                });
+            } else {
+                btn[i].addEventListener("click", function (e) {
+                    div2.innerHTML = e.currentTarget.innerHTML;
+                    stateObj.def = e.currentTarget.innerHTML;
+                    history.replaceState(stateObj, "");
+                });
+            }
+        }
+
+        div1.innerHTML = history.state ? (history.state.abc ? history.state.abc : "") : "";
+        div2.innerHTML = history.state ? (history.state.def ? history.state.def : "") : "";
+    </script>
+</body>
+
+</html>
