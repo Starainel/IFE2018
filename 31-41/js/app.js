@@ -24,7 +24,7 @@ if (!location.hash) {
 //读取hash，恢复页面
 readHash();
 
-//前进/后退时，恢复之前的状态
+//前进/后退时，恢复之前的状态 (hash改变会触发popstate)
 window.addEventListener("popstate", function () {
     readHash();
 });
