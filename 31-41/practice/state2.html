@@ -29,19 +29,34 @@
                 btn[i].addEventListener("click", function (e) {
                     div1.innerHTML = e.currentTarget.innerHTML;
                     stateObj.abc = e.currentTarget.innerHTML;
-                    history.replaceState(stateObj, "");
+                    history.pushState(stateObj, "", location.href.slice(0, location.protocol.length + 2 +
+                            location.host.length) +
+                        location.pathname + "#" + stateObj.abc + "-" + (stateObj.def ? stateObj.def : ""));
                 });
             } else {
                 btn[i].addEventListener("click", function (e) {
                     div2.innerHTML = e.currentTarget.innerHTML;
                     stateObj.def = e.currentTarget.innerHTML;
-                    history.replaceState(stateObj, "");
+                    history.pushState(stateObj, "", location.href.slice(0, location.protocol.length + 2 +
+                            location.host.length) +
+                        location.pathname + "#" + (stateObj.abc ? stateObj.abc : "") + "-" + stateObj.def);
                 });
             }
         }
 
-        div1.innerHTML = history.state ? (history.state.abc ? history.state.abc : "") : "";
-        div2.innerHTML = history.state ? (history.state.def ? history.state.def : "") : "";
+        function recover() {
+            div1.innerHTML = history.state ? (history.state.abc ? history.state.abc : "") : location.hash.slice(1,
+                location
+                .hash.indexOf("-"));
+            div2.innerHTML = history.state ? (history.state.def ? history.state.def : "") : location.hash.slice(location
+                .hash.indexOf("-") + 1);
+        }
+
+        //刷新页面，恢复显示
+        recover();
+
+        //前进/回退，恢复显示
+        window.addEventListener("popstate", recover);
     </script>
 </body>
 

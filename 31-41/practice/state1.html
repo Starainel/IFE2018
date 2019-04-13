@@ -18,13 +18,21 @@
         for (var i = 0; i < btn.length; i++) {
             btn[i].addEventListener("click", function (e) {
                 div.innerHTML = e.currentTarget.innerHTML;
-                history.replaceState({
-                    content: e.currentTarget.innerHTML
-                }, "")
+                //点击按钮时，添加一个历史记录。把当前内容添加到state对象和hash中
+                history.pushState({
+                        content: e.currentTarget.innerHTML
+                    }, "", location.href.slice(0, location.protocol.length + 2 + location.host.length) +
+                    location.pathname + "#" + e.currentTarget.innerHTML);
             });
         }
 
-        div.innerHTML = history.state ? history.state.content : "";
+        function recover() {
+            div.innerHTML = history.state ? history.state.content : (location.hash ? location.hash.slice(1) : "");
+        }
+
+        //前进/后退/刷新页面时，先从state对象中读取内容并显示；如果没有state对象，则表示为第一次打开，从hash中恢复内容
+        recover();
+        window.addEventListener("popstate", recover);
 
         //history只在当前窗口有效
     </script>
