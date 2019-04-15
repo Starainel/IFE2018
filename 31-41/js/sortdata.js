@@ -33,8 +33,11 @@ function getData() {
         }
     }
 
-    //设置hash
-    setHash(list);
+    /* //直接设置hash的方式
+    setHash(list); */
+
+    //使用pushstate操作历史记录的方式
+    addHistory(list);
 
     return [list, regionCnt, productCnt];
 }

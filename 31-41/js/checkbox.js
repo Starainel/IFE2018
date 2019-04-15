@@ -6,6 +6,9 @@ var tableBox = document.querySelector("#table-wrapper");
 var regionAll = document.querySelector("#region-all");
 var productAll = document.querySelector("#product-all");
 
+//是否添加历史记录
+var flag;
+
 ckbox(region, 3, regionAll);
 ckbox(product, 3, productAll);
 
@@ -14,12 +17,12 @@ function ckbox(type, num, allbox) {
     var count = 0;
     for (var i = 0; i < type.length; i++) {
         type[i].addEventListener("click", function (e) {
-            if (e.target.checked) {
+            if (e.currentTarget.checked) {
                 count++;
             } else if (count > 1) {
                 count--;
             } else {
-                e.target.checked = true;
+                e.currentTarget.checked = true;
                 alert("不能全部取消！");
             }
             if (count === num) {
